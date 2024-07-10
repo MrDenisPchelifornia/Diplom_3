@@ -11,22 +11,20 @@ class BasePage:
         self.base_url = base_url
 
     @allure.step("")
-    def find_element(self, locator, time=20):
-        return WebDriverWait(self.driver, time).until(
+    def find_element(self, locator, timeout=20):
+        return WebDriverWait(self.driver, timeout).until(
             EC.presence_of_element_located(locator)
-        )
+        ) and self.visibility_of_element(locator)
 
     @allure.step("")
-    def click_element(self, locator, time=20):
-        element = self.find_element(locator, time)
+    def click_element(self, locator):
+        element = self.find_element(locator)
         self.driver.execute_script("arguments[0].scrollIntoView(true);", element)
-        WebDriverWait(self.driver, time).until(
-            EC.visibility_of_element_located(locator)
-        ).click()
+        self.visibility_of_element(locator).click()
 
     @allure.step("")
-    def enter_text(self, locator, text, time=10):
-        element = self.find_element(locator, time)
+    def enter_text(self, locator, text, timeout=10):
+        element = self.find_element(locator, timeout)
         element.clear()
         element.send_keys(text)
 
@@ -39,8 +37,8 @@ class BasePage:
         drag_and_drop(self.driver, source, target)
 
     @allure.step("")
-    def visibility_of_element(self, locator):
-        WebDriverWait(self.driver, 10).until(EC.visibility_of_element_located(locator))
+    def visibility_of_element(self, locator, timeout=10):
+        WebDriverWait(self.driver, timeout).until(EC.visibility_of_element_located(locator))
         return self.driver.find_element(*locator)
 
     @allure.step("")

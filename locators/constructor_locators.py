@@ -3,7 +3,7 @@ from selenium.webdriver.common.by import By
 class ConstructorLocators:
     INGREDIENT = (By.XPATH, "/html/body/div/div/main/section[1]/div[2]/ul[1]/a[1]/img")
     ADD_TO_ORDER_BUTTON = (By.ID, "add-to-order-button")
-    CLOSE_DETAILS_BUTTON = (By.XPATH, "(.//button[@type='button' and contains(@class, 'modal__close')])[1]")
+    CLOSE_DETAILS_BUTTON = (By.XPATH, './/button[contains(@class, "modal__close")]')
     SUBMIT_ORDER_BUTTON = (By.XPATH, "/html/body/div/div/main/section[2]/div/button")
     CONSTRUCTOR_BUTTON = (By.XPATH, "/html/body/div/div/header/nav/ul/li[1]/a/p")
     LOGIN_BUTTON = (By.XPATH, "/html/body/div/div/main/div/form/button")
@@ -15,4 +15,6 @@ class ConstructorLocators:
     ORDER_LIST_HEADING = (By.XPATH, "/html/body/div/div/main/div/h1")
     DETAILS_OF_INGRADIENTS_HEADING = (By.XPATH, "/html/body/div/div/section[1]/div[1]/div/h2")
     INFORMATION_ON_SUBMIT_WINDOW = (By.XPATH, "/html/body/div/div/section/div[1]/div/div[2]/p[1]")
+    SUBMIT_MODAL_WINDOW = (By.XPATH, ".//div[contains(@class, 'Modal_modal__contentBox')]")
+    CLOSE_MODAL_WINDOW_BUTTON = (By.XPATH, './/button[contains(@class, "modal__close")]')
 

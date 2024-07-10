@@ -1,9 +1,10 @@
 import pytest
 from selenium import webdriver
+from data.all_data import Links
 
 @pytest.fixture(scope='session')
 def base_url():
-    return "https://stellarburgers.nomoreparties.site"
+    return Links.BASE_URL
 
 @pytest.fixture(params=["chrome", "firefox"])
 def setup(request):
@@ -22,7 +23,7 @@ def login_page(setup, base_url):
     return LoginPage(setup, base_url)
 
 @pytest.fixture()
-def password_recovery_page(setup, base_url):  # передаем base_url
+def password_recovery_page(setup, base_url):
     from pages.password_recovery_page import PasswordRecoveryPage
     return PasswordRecoveryPage(setup, base_url)
 

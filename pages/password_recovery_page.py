@@ -10,8 +10,7 @@ class PasswordRecoveryPage(BasePage):
 
     @allure.step("")
     def recover_password(self, email):
-        self.click_element(PasswordRecoveryLocators.EMAIL_INPUT)
-        self.enter_text(PasswordRecoveryLocators.EMAIL_INPUT2, email)
+        self.enter_text(PasswordRecoveryLocators.EMAIL_INPUT, email)
         self.click_element(PasswordRecoveryLocators.RECOVER_BUTTON)
 
     @allure.step("")

@@ -28,7 +28,7 @@ class ConstructorPage(BasePage):
 
     @allure.step("")
     def close_ingredient_details(self):
-        self.visibility_of_element(ConstructorLocators.CLOSE_DETAILS_BUTTON)
+        return self.visibility_of_element(ConstructorLocators.CLOSE_DETAILS_BUTTON)
         self.click_element(ConstructorLocators.CLOSE_DETAILS_BUTTON)
 
     @allure.step("")
@@ -50,4 +50,14 @@ class ConstructorPage(BasePage):
     @allure.step("")
     def get_text_on_submit_window(self):
         return self.find_element(ConstructorLocators.INFORMATION_ON_SUBMIT_WINDOW).text
+
+    def wait_and_close_submit_modal_window(self):
+        self.wait_submit_modal_window()
+        self.close_submit_modal_window()
+
+    def wait_submit_modal_window(self):
+        return self.find_element(ConstructorLocators.SUBMIT_MODAL_WINDOW)
+
+    def close_submit_modal_window(self):
+        self.find_element(ConstructorLocators.CLOSE_MODAL_WINDOW_BUTTON).click()
 
