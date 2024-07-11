@@ -6,8 +6,7 @@ from data.all_data import Links
 def base_url():
     return Links.BASE_URL
 
-# @pytest.fixture(params=["chrome", "firefox"])
-@pytest.fixture(params=["chrome"])
+@pytest.fixture(params=["chrome", "firefox"])
 def setup(request):
     if request.param == "chrome":
         driver = webdriver.Chrome()
