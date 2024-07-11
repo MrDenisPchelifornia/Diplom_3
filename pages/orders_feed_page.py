@@ -15,13 +15,12 @@ class OrdersFeedPage(BasePage):
 
     @allure.step("")
     def get_order_number(self):
-        return self.find_element(OrdersFeedLocators.ORDER_NUMBER, timeout=30).text
+        return self.find_element(OrdersFeedLocators.ORDER_NUMBER).text
 
     @allure.step("")
     def get_order_list(self):
         return self.find_element(OrdersFeedLocators.ORDERS_LIST).text
 
-    @allure.step("")
     @allure.step("")
     def get_all_times_count(self):
         return self.find_element(OrdersFeedLocators.ALL_TIMES_COUNTER).text
@@ -29,6 +28,11 @@ class OrdersFeedPage(BasePage):
     @allure.step("")
     def get_todays_count(self):
         return self.find_element(OrdersFeedLocators.TODAYS_COUNTER).text
+
+    @allure.step("")
+    def go_to_history(self):
+        self.click_element(OrdersFeedLocators.ACCOUNT_BUTTON)
+        self.click_element(OrdersFeedLocators.ORDER_HISTORY_TAB)
 
     @allure.step("")
     def get_number_order_in_progress(self, timeout=8):

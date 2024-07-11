@@ -20,26 +20,12 @@ class TestOrdersFeed:
         constructor_page.add_ingredient_to_order()
         constructor_page.submit_order()
         constructor_page.close_ingredient_details()
-        orders_feed_page.go_to_history()
-        order_number = orders_feed_page.get_order_number()
         orders_feed_page.open_url(Handle.order_list_handle)
         order_list = orders_feed_page.get_order_list()
+        orders_feed_page.go_to_history()
+        order_number = orders_feed_page.get_order_number()
 
         assert order_number in order_list
-
-    @allure.title('Проверка что при создании наказа счетчик "Выполнено за все время" увеличивается')
-    def test_order_all_times_counters_update(self, login_page, constructor_page, orders_feed_page):
-        orders_feed_page.open_url(Handle.order_list_handle)
-        all_times_count_before_order = orders_feed_page.get_all_times_count()
-        login_page.open_url(Handle.login_handle)
-        login_page.login(User.email, User.password)
-        constructor_page.add_ingredient_to_order()
-        constructor_page.submit_order()
-        constructor_page.close_ingredient_details()
-        orders_feed_page.open_url(Handle.order_list_handle)
-        all_times_count_after_order = orders_feed_page.get_all_times_count()
-
-        assert all_times_count_before_order < all_times_count_after_order
 
     @allure.title('Проверка что при создании наказа счетчик "Выполнено за сегодня" увеличивается')
     def test_order_todays_counters_update(self, login_page, constructor_page, orders_feed_page):

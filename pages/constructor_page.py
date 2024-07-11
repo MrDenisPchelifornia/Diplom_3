@@ -60,4 +60,3 @@ class ConstructorPage(BasePage):
 
     def close_submit_modal_window(self):
         self.find_element(ConstructorLocators.CLOSE_MODAL_WINDOW_BUTTON).click()
-

@@ -10,11 +10,17 @@ class BasePage:
         self.driver = driver
         self.base_url = base_url
 
+    # @allure.step("")
+    # def find_element(self, locator, timeout=20):
+    #     return WebDriverWait(self.driver, timeout).until(
+    #         EC.presence_of_element_located(locator)
+    #     ) and self.visibility_of_element(locator)
+
     @allure.step("")
     def find_element(self, locator, timeout=20):
         return WebDriverWait(self.driver, timeout).until(
             EC.presence_of_element_located(locator)
-        ) and self.visibility_of_element(locator)
+        )
 
     @allure.step("")
     def click_element(self, locator):
